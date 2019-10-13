@@ -18,12 +18,12 @@ function configureDefault(opts = {}){
   /** ------------------ OPTS ------------------- */
 
   const {
-    directory: DIR = process.cwd(),
+    directory = process.cwd(),
     mode = process.env.WEBPACK_DEV_SERVER ? "development" : "production",
     title
   } = opts;
 
-  const dir = path => resolve(DIR, path);
+  const dir = path => resolve(directory, path);
   const DEV = mode === "development";
   
   /** ------------------ BABEL ------------------ */
@@ -57,7 +57,7 @@ function configureDefault(opts = {}){
     {
       test: /\.js$/,
       loader: "babel-loader",
-      include: __dirname,
+      include: directory,
       exclude: dir("node_modules"),
       options: babelrc
     },
