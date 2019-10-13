@@ -126,6 +126,7 @@ function configureDefault(opts = {}){
       "./app": dir("./src/app.hot.js")
     };
     config.devServer = {
+      historyApiFallback: true,
       contentBase: dir("./public"),
       host: "0.0.0.0",
       port: 3000,
