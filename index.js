@@ -1,8 +1,8 @@
-const PresetExpressive = require("@expressive/babel-preset-react");
+// const PresetExpressive = require("@expressive/babel-preset-react");
 const GradientModifier = require("@expressive/modify-gradient");
 
-const PresetReact = require("@babel/preset-react");
-const PluginClassProperties = require("@babel/plugin-proposal-class-properties");
+// const PresetReact = require("@babel/preset-react");
+// const PluginClassProperties = require("@babel/plugin-proposal-class-properties");
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -30,14 +30,14 @@ function configureDefault(opts = {}){
 
   const babelrc = {
     presets: [
-      PresetReact,
-      [PresetExpressive, {
+      "@babel/react",
+      ["@expressive/react", {
         modifiers: [ GradientModifier ],
         hot: DEV
       }]
     ],
     plugins: [
-      PluginClassProperties
+      "@babel/proposal-class-properties"
     ]
   }
 
