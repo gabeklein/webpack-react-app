@@ -1,8 +1,4 @@
-// const PresetExpressive = require("@expressive/babel-preset-react");
 const GradientModifier = require("@expressive/modify-gradient");
-
-// const PresetReact = require("@babel/preset-react");
-// const PluginClassProperties = require("@babel/plugin-proposal-class-properties");
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
