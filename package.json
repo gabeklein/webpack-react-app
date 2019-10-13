@@ -1,11 +1,10 @@
 {
-  "name": "@wirelessmatch/webpack",
+  "name": "@wirelessmatch/webpack-config",
   "version": "0.1.0",
   "description": "Standard webpack.config for WirelessMatch React deploy.",
   "main": "index.js",
   "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/"
+    "access": "public"
   },
   "author": "Gabe <gabe@termtm.com>",
   "repository": "git@github.com:wirelessmatch/webpack-config.git",
