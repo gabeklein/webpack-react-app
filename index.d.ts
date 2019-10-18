@@ -1,4 +1,10 @@
-import { MaybeLinkTagOptions, MaybeScriptTagOptions, MetaTagOptions } from "html-webpack-tags-plugin"
+import {
+  LinkTagOptions,
+  MaybeLinkTagOptions,
+  MaybeScriptTagOptions,
+  MetaTagOptions,
+  ScriptTagOptions,
+} from 'html-webpack-tags-plugin';
 
 declare function Prefab(opts: Prefab.Options): any;
 
@@ -41,15 +47,25 @@ declare namespace Prefab {
     styleCSS?: true | string;
   
     /**
-     * If defined, passed to appended instance of `html-webpack-tags-plugin`.
+     * Passed to appended instance of `html-webpack-tags-plugin`.
      */
     tags?: string | MaybeLinkTagOptions | MaybeScriptTagOptions | Array<string | MaybeLinkTagOptions | MaybeScriptTagOptions> 
-  
+    
     /**
-     * If defined, passed to appended instance of `html-webpack-tags-plugin`.
+     * Passed to appended instance of `html-webpack-tags-plugin`.
      */
-    metas?: string | MetaTagOptions | Array<string | MetaTagOptions>
-  
+    links?: string | LinkTagOptions | Array<string | LinkTagOptions>;
+
+    /**
+     * Passed to appended instance of `html-webpack-tags-plugin`.
+     */
+    scripts?: string | ScriptTagOptions | Array<string | ScriptTagOptions>;
+
+    /**
+     * Passed to appended instance of `html-webpack-tags-plugin`.
+     */
+    metas?: string | MetaTagOptions | Array<string | MetaTagOptions>;
+
     /**
      * Override `id` for React root `<div>`.
      */

@@ -19,6 +19,8 @@ function configureDefault(opts = {}){
     title: htmlTitle,
     tags: insertTags,
     metas: insertMetas,
+    scripts: insertScripts,
+    links: insertLinks,
     root: reactRoot,
     modal: modalRoot,
     babel: babelInsert = {},
@@ -145,17 +147,13 @@ function configureDefault(opts = {}){
       })
     )
 
-  if(insertTags)
+  if(insertLinks || insertMetas || insertScripts || insertTags)
     plugins.push(
       new HtmlWebpackTagsPlugin({ 
-        tags: insertTags
-      })
-    )
-
-  if(insertMetas)
-    plugins.push(
-      new HtmlWebpackTagsPlugin({
-        metas: insertMetas
+        tags: insertTags,
+        scripts: insertScripts,
+        metas: insertMetas,
+        links: insertLinks
       })
     )
 
