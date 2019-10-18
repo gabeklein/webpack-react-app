@@ -1,7 +1,7 @@
 {
   "name": "@gabeklein/webpack-config",
-  "version": "0.1.4",
-  "description": "Standard webpack.config for WirelessMatch React deploy.",
+  "version": "2.0.0",
+  "description": "Standard webpack.config for React deploys.",
   "main": "index.js",
   "publishConfig": {
     "access": "public"
