@@ -57,10 +57,13 @@ function configureDefault(opts = {}){
 
   if(staticDir !== false)
     plugins.push(
-    new CopyWebpackPlugin([
-      { from: dir(staticDir || "static"), to: dir("public") } 
-    ])
+      new CopyWebpackPlugin([
+        { from: dir(staticDir || "static"), to: dir("public") } 
+      ])
     )
+
+  if(webpackPlugins)
+    plugins.push(...webpackPlugins)
 
   const loaders = [
     {
@@ -142,6 +145,20 @@ function configureDefault(opts = {}){
       })
     )
 
+  if(insertTags)
+    plugins.push(
+      new HtmlWebpackTagsPlugin({ 
+        tags: insertTags
+      })
+    )
+
+  if(insertMetas)
+    plugins.push(
+      new HtmlWebpackTagsPlugin({
+        metas: insertMetas
+      })
+    )
+
   /** --------------- DEVELOPMENT ---------------- */
 
   if(DEV){
@@ -186,25 +203,6 @@ function configureDefault(opts = {}){
       new HtmlWebpackTagsPlugin({ scripts, append: false })
     )
   }
-
-  /** ----------------- APPEND ------------------- */
-
-  if(insertTags)
-    plugins.push(
-      new HtmlWebpackTagsPlugin({ 
-        tags: insertTags
-      })
-    )
-
-  if(insertMetas)
-    plugins.push(
-      new HtmlWebpackTagsPlugin({
-        metas: insertMetas
-      })
-    )
-
-  if(webpackPlugins)
-    plugins.push(...webpackPlugins)
 
   /** ----------------- EXPORT ------------------- */
 
