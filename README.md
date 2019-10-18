@@ -1,8 +1,6 @@
-<p align="center">
-<h2 align="center">
-  Wireless Match ²
-</h2>
-<h4 align="center">Standard Webpack deployment for React</h4>
+<br/>
+
+<h2 align="center">Standard Webpack deployment for React</h2>
 
 <br/>
 

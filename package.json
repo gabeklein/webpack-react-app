@@ -1,5 +1,5 @@
 {
-  "name": "@wirelessmatch/webpack-config",
+  "name": "@gabeklein/webpack-config",
   "version": "0.1.4",
   "description": "Standard webpack.config for WirelessMatch React deploy.",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "access": "public"
   },
   "author": "Gabe <gabe@termtm.com>",
-  "repository": "git@github.com:wirelessmatch/webpack-config.git",
+  "repository": "git@github.com:gabeklein/webpack-config.git",
   "dependencies": {
     "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
