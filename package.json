@@ -6,6 +6,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
   "author": "Gabe <gabe@termtm.com>",
   "repository": "git@github.com:gabeklein/webpack-config.git",
   "dependencies": {
