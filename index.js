@@ -187,7 +187,9 @@ function configureDefault(opts = {}){
 
   if(insertTags)
     plugins.push(
-      new HtmlWebpackPlugin({ tags: insertTags })
+      new HtmlWebpackTagsPlugin({ 
+        tags: insertTags
+      })
     )
 
   if(webpackPlugins)
