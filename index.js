@@ -14,14 +14,20 @@ function configureDefault(opts = {}){
   /** ------------------ OPTS ------------------- */
 
   const {
-    directory = process.cwd(),
-    mode = process.env.WEBPACK_DEV_SERVER ? "development" : "production",
-    title,
+    dir: currentDir = process.cwd(),
+    mode: envMode = process.env.WEBPACK_DEV_SERVER ? "development" : "production",
+    title: htmlTitle,
+    tags: insertTags,
+    root: reactRoot,
+    modal: modalRoot,
+    babel: babelInsert = {},
+    static: staticDir,
     styleCSS,
+    plugins: webpackPlugins
   } = opts;
 
-  const dir = path => resolve(directory, path);
-  const DEV = mode === "development";
+  const dir = path => resolve(currentDir, path);
+  const DEV = envMode === "development";
   
   /** ------------------ BABEL ------------------ */
 
@@ -38,23 +44,25 @@ function configureDefault(opts = {}){
     ]
   }
 
+  if(babelInsert.presets)
+    Object.assign(babelrc.presets, babelInsert.presets)
+
+  if(babelInsert.plugins)
+    Object.assign(babelrc.plugins, babelInsert.plugins)
+
   /** ------------------ WEBPACK ----------------- */
 
   const plugins = [
     new CopyWebpackPlugin([
-      { from: dir("static"), to: dir("public") } 
+      { from: dir(staticDir || "static"), to: dir("public") } 
     ])
   ];
 
   const loaders = [
     {
-      test: /\.ya?ml$/,
-      use: ["yaml", "json"]
-    },
-    {
       test: /\.js$/,
       loader: "babel-loader",
-      include: directory,
+      include: currentDir,
       exclude: dir("node_modules"),
       options: babelrc
     },
@@ -62,6 +70,14 @@ function configureDefault(opts = {}){
       test: /\.(png|jpe?g|gif|mp4)$/i,
       loader: 'file-loader',
       options: { name: '[md5:hash:base64:10].[ext]' },
+    },
+    {
+      test: /\.css$/i,
+      use: ['style-loader', 'css-loader'],
+    },
+    {
+      test: /\.ya?ml$/,
+      use: ["yaml", "json"]
     },
     {
       test: /\.mdx?$/,
@@ -72,10 +88,6 @@ function configureDefault(opts = {}){
         },
         '@mdx-js/loader'
       ]
-    },
-    {
-      test: /\.css$/i,
-      use: ['style-loader', 'css-loader'],
     }
   ];
 
@@ -102,20 +114,28 @@ function configureDefault(opts = {}){
 
   plugins.push(
     new HtmlWebpackPlugin({
-      title, 
+      title: htmlTitle, 
       inject: true,
       base: "/",
       meta: {
         "viewport": "viewport-fit=cover, maximum-scale=1.0, initial-scale=1.0"
       }
     }),
-    new HtmlWebpackRootPlugin("react-root"),
-    new HtmlWebpackRootPlugin("react-modal-root")
+    new HtmlWebpackRootPlugin(reactRoot || "react-root")
   )
+  
+  if(modalRoot)
+    plugins.push(
+      new HtmlWebpackRootPlugin(modalRoot === true ? "react-modal-root" : modalRoot)
+    )
 
   if(styleCSS)
     plugins.push(
-      new HtmlWebpackTagsPlugin({ links: ["style.css"] })
+      new HtmlWebpackTagsPlugin({ 
+        links: [
+          styleCSS === true ? "style.css" : styleCSS
+        ] 
+      })
     )
 
   /** --------------- DEVELOPMENT ---------------- */
@@ -162,6 +182,16 @@ function configureDefault(opts = {}){
       new HtmlWebpackTagsPlugin({ scripts, append: false })
     )
   }
+
+  /** ----------------- APPEND ------------------- */
+
+  if(insertTags)
+    plugins.push(
+      new HtmlWebpackPlugin({ tags: insertTags })
+    )
+
+  if(webpackPlugins)
+    plugins.push(...webpackPlugins)
 
   /** ----------------- EXPORT ------------------- */
 
