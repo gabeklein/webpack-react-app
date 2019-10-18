@@ -16,7 +16,8 @@ function configureDefault(opts = {}){
   const {
     directory = process.cwd(),
     mode = process.env.WEBPACK_DEV_SERVER ? "development" : "production",
-    title
+    title,
+    styleCSS,
   } = opts;
 
   const dir = path => resolve(directory, path);
@@ -71,6 +72,10 @@ function configureDefault(opts = {}){
         },
         '@mdx-js/loader'
       ]
+    },
+    {
+      test: /\.css$/i,
+      use: ['style-loader', 'css-loader'],
     }
   ];
 
@@ -104,12 +109,14 @@ function configureDefault(opts = {}){
         "viewport": "viewport-fit=cover, maximum-scale=1.0, initial-scale=1.0"
       }
     }),
-    new HtmlWebpackTagsPlugin({ 
-      links: ["style.css"] 
-    }),
     new HtmlWebpackRootPlugin("react-root"),
     new HtmlWebpackRootPlugin("react-modal-root")
   )
+
+  if(styleCSS)
+    plugins.push(
+      new HtmlWebpackTagsPlugin({ links: ["style.css"] })
+    )
 
   /** --------------- DEVELOPMENT ---------------- */
 
