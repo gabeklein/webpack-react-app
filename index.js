@@ -18,6 +18,7 @@ function configureDefault(opts = {}){
     mode: envMode = process.env.WEBPACK_DEV_SERVER ? "development" : "production",
     title: htmlTitle,
     tags: insertTags,
+    metas: insertMetas,
     root: reactRoot,
     modal: modalRoot,
     babel: babelInsert = {},
@@ -189,6 +190,13 @@ function configureDefault(opts = {}){
     plugins.push(
       new HtmlWebpackTagsPlugin({ 
         tags: insertTags
+      })
+    )
+
+  if(insertMetas)
+    plugins.push(
+      new HtmlWebpackTagsPlugin({
+        metas: insertMetas
       })
     )
 
