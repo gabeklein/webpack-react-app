@@ -104,6 +104,12 @@ function configureDefault(opts = {}){
     entry: {
       main: dir("src/index.js")
     },
+    stats: {
+      assets: false
+    },
+    performance: {
+      maxAssetSize: 1000000
+    },
     output: {
       filename: "[name].js",
       publicPath: "/",
