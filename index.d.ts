@@ -27,9 +27,10 @@ declare namespace ExpressiveWebpackConfig {
     /**
      * Custom static directory (for `copy-webpack-plugin` to copy to public). 
      * 
-     * Relative to `dir`.
+     * - `string` - override default `/static`. Relative to `dir`. 
+     * - `false` - plugin will not run.
      */
-    static?: string;
+    static?: string | false;
   
     /**
      * Append `<link>` style tag to html. Relative to `public`.

@@ -53,11 +53,14 @@ function configureDefault(opts = {}){
 
   /** ------------------ WEBPACK ----------------- */
 
-  const plugins = [
+  const plugins = [];
+
+  if(staticDir !== false)
+    plugins.push(
     new CopyWebpackPlugin([
       { from: dir(staticDir || "static"), to: dir("public") } 
     ])
-  ];
+    )
 
   const loaders = [
     {
