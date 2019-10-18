@@ -1,11 +1,11 @@
 import { MaybeLinkTagOptions, MaybeScriptTagOptions, MetaTagOptions } from "html-webpack-tags-plugin"
 
-declare function ExpressiveWebpackConfig(opts: ExpressiveWebpackConfig.ConfigOptions): any;
+declare function Prefab(opts: Prefab.Options): any;
 
-export = ExpressiveWebpackConfig;
+export = Prefab;
 
-declare namespace ExpressiveWebpackConfig {
-  interface ConfigOptions {
+declare namespace Prefab {
+  interface Options {
     /** Root directory.
      * 
      * Defaults to `process.cwd()`
