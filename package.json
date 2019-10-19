@@ -11,6 +11,10 @@
     "lib/",
     "index.d.ts"
   ],
+  "scripts": {
+    "postversion": "npm publish",
+    "postpublish": "git push; git push --tags"
+  },
   "author": "Gabe <gabe@termtm.com>",
   "repository": "git@github.com:gabeklein/webpack-config.git",
   "dependencies": {
