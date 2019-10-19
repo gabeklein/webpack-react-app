@@ -5,7 +5,7 @@
 <br/>
 
 ## About
-This exports the standard webpack configuration for WirelessMatch React deployments. 
+This exports the standard webpack configuration for React deployments. 
 
 <br/>
 
