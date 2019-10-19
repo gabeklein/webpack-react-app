@@ -16,6 +16,7 @@ function configureDefault(opts = {}){
   const {
     dir: currentDir = process.cwd(),
     mode: envMode = process.env.WEBPACK_DEV_SERVER ? "development" : "production",
+    entry: entryModule = "src/app.js",
     title: htmlTitle,
     tags: insertTags,
     metas: insertMetas,
@@ -102,7 +103,7 @@ function configureDefault(opts = {}){
 
   const config = {
     entry: {
-      main: dir("src/index.js")
+      main: dir(entryModule)
     },
     stats: {
       assets: false

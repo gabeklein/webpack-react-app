@@ -17,6 +17,15 @@ declare namespace Prefab {
      * Defaults to `process.cwd()`
      */
     dir?: string;
+
+    /**
+     * Entry point, relative to `dir`. 
+     * 
+     * Export a component as default and it will be rendered in your application's root.
+     * 
+     * Default: `src/app.js`
+     */
+    entry?: string;
   
     /**
      * Env mode; production or development. Is passed to webpack.
