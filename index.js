@@ -158,15 +158,26 @@ function configureDefault(opts = {}){
       })
     )
 
-  if(insertLinks || insertMetas || insertScripts || insertTags)
+  if(insertLinks || insertMetas || insertScripts || insertTags){
+    const conf = { 
+      tags: insertTags,
+      scripts: insertScripts,
+      metas: insertMetas,
+      links: insertLinks
+    };
+
+    for(const k in conf)
+      if(conf[k])
+        conf[k] = conf[k].map(x => {
+          if(typeof x == "string" && /https?:\/\//.test(x))
+            return { path: x, publicPath: false }
+          return x;
+        })
+
     plugins.push(
-      new HtmlWebpackTagsPlugin({ 
-        tags: insertTags,
-        scripts: insertScripts,
-        metas: insertMetas,
-        links: insertLinks
-      })
+      new HtmlWebpackTagsPlugin(conf)
     )
+  }
 
   /** --------------- DEVELOPMENT ---------------- */
 
