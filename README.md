@@ -12,7 +12,7 @@ This exports the standard webpack configuration for WirelessMatch React deployme
 ## Installation
 
 ```
-npm install @wirelessmatch/webpack
+npm install @gabeklein/webpack-react-app
 ```
 
 <br/>
@@ -21,10 +21,10 @@ npm install @wirelessmatch/webpack
 
 > webpack.config.js
 ```js
-const config = require("@wirelessmatch/webpack");
+const config = require("@gabeklein/webpack-react-app");
 
 module.exports = config({
-  title: "Wireless Match"
+  title: "My Website"
 })
 ```
 
