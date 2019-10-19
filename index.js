@@ -1,11 +1,11 @@
 const { DefinePlugin } = require("webpack");
-const GradientModifier = require("@expressive/modify-gradient");
-
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
 const IntermediateEntryPlugin = require("webpack-intermediate-entry");
+
+const GradientModifier = require("@expressive/modify-gradient");
 
 const { resolve } = require("path");
 
@@ -20,17 +20,16 @@ function configureDefault(opts = {}){
     mode: envMode = process.env.WEBPACK_DEV_SERVER ? "development" : "production",
     root: reactRoot = "react-root",
     entry: entryModule = "src/app.js",
+    modal: modalRoot,
+    static: staticDir,
+    babel: babelInsert = {},
+    plugins: webpackPlugins,
     title: htmlTitle,
     tags: insertTags,
     metas: insertMetas,
     scripts: insertScripts,
     links: insertLinks,
-    root: reactRoot,
-    modal: modalRoot,
-    babel: babelInsert = {},
-    static: staticDir,
-    styleCSS,
-    plugins: webpackPlugins
+    styleCSS
   } = opts;
 
   const dir = path => resolve(currentDir, path);
