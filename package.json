@@ -22,8 +22,6 @@
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
-    "@expressive/babel-preset-react": "^1.0.0-beta.24",
-    "@expressive/modify-gradient": "^1.0.0-beta.20",
     "@hot-loader/react-dom": "^16.8.6",
     "@mdx-js/loader": "^1.5.1",
     "babel-loader": "^8.0.6",
@@ -40,7 +38,6 @@
     "yaml-loader": "^0.5.0"
   },
   "peerDependencies": {
-    "@expressive/react": "^1.0.0-beta.25",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "webpack": "^4.41.0",
