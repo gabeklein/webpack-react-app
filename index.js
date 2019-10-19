@@ -1,9 +1,11 @@
+const { DefinePlugin } = require("webpack");
 const GradientModifier = require("@expressive/modify-gradient");
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
+const IntermediateEntryPlugin = require("webpack-intermediate-entry");
 
 const { resolve } = require("path");
 
@@ -16,6 +18,7 @@ function configureDefault(opts = {}){
   const {
     dir: currentDir = process.cwd(),
     mode: envMode = process.env.WEBPACK_DEV_SERVER ? "development" : "production",
+    root: reactRoot = "react-root",
     entry: entryModule = "src/app.js",
     title: htmlTitle,
     tags: insertTags,
@@ -56,7 +59,9 @@ function configureDefault(opts = {}){
 
   /** ------------------ WEBPACK ----------------- */
 
-  const plugins = [];
+  const plugins = [
+    new DefinePlugin({ REACT_ROOT: `"${reactRoot}"` })
+  ];
 
   if(staticDir !== false)
     plugins.push(
@@ -174,10 +179,6 @@ function configureDefault(opts = {}){
     config.stats = {
       modules: false
     }
-    config.resolve.alias = {
-      "react-dom": "@hot-loader/react-dom",
-      "./app": dir("./src/app.hot.js")
-    };
     config.devServer = {
       historyApiFallback: true,
       contentBase: dir("./public"),
@@ -185,6 +186,10 @@ function configureDefault(opts = {}){
       port: 3000,
       hot: true
     }
+
+    plugins.push(
+      new IntermediateEntryPlugin({ insert: resolve(__dirname, "entry.hot.js") })
+    )
   }
 
   /** --------------- PRODUCTION ----------------- */
@@ -204,7 +209,9 @@ function configureDefault(opts = {}){
       "react": "React",
       "react-dom": "ReactDOM"
     };
+    
     plugins.push(
+      new IntermediateEntryPlugin({ insert: resolve(__dirname, "entry.prod.js") }),
       new HtmlWebpackTagsPlugin({ scripts, append: false })
     )
   }
