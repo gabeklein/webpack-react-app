@@ -2,13 +2,13 @@
   "name": "@gabeklein/webpack-config",
   "version": "2.4.0",
   "description": "Standard webpack.config for React deploys.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "publishConfig": {
     "access": "public"
   },
   "types": "index.d.ts",
   "files": [
-    "index.js",
+    "lib/",
     "index.d.ts"
   ],
   "author": "Gabe <gabe@termtm.com>",
