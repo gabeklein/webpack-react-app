@@ -1,6 +1,6 @@
 {
   "name": "@gabeklein/webpack-config",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Standard webpack.config for React deploys.",
   "main": "lib/index.js",
   "publishConfig": {
