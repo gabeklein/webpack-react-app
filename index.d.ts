@@ -6,6 +6,9 @@ import {
   ScriptTagOptions,
 } from 'html-webpack-tags-plugin';
 
+import { Plugin } from "webpack"
+import { ProxyConfigArray, ProxyConfigMap } from "webpack-dev-server"
+
 declare function Prefab(opts: Prefab.Options): any;
 
 export = Prefab;
@@ -46,6 +49,11 @@ declare namespace Prefab {
      * - `false` - plugin will not run.
      */
     static?: string | false;
+
+    /**
+     * Proxy configuration passed to webpack-dev-server.
+     */
+    proxy?: ProxyConfigArray | ProxyConfigMap;
   
     /**
      * Append `<link>` style tag to html. Relative to `public`.
@@ -99,6 +107,6 @@ declare namespace Prefab {
     /**
      * Append webpack plugins.
      */
-    plugins?: any;
+    plugins?: Plugin[];
   }
 }
