@@ -6,7 +6,7 @@ import {
   ScriptTagOptions,
 } from 'html-webpack-tags-plugin';
 
-import { Plugin } from "webpack"
+import { Plugin, RuleSetLoader } from "webpack"
 import { ProxyConfigArray, ProxyConfigMap } from "webpack-dev-server"
 
 declare function Prefab(opts: Prefab.Options): any;
@@ -108,5 +108,10 @@ declare namespace Prefab {
      * Append webpack plugins.
      */
     plugins?: Plugin[];
+
+    /**
+     * Append webpack loaders.
+     */
+    loaders?: RuleSetLoader[];
   }
 }
