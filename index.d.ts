@@ -29,6 +29,11 @@ declare namespace Prefab {
      * Default: `src/app.js`
      */
     entry?: string;
+
+    ext: {
+      modules: string[];
+      assets: string | string[];
+    }
   
     /**
      * Env mode; production or development. Is passed to webpack.
