@@ -84,9 +84,9 @@ declare namespace Prefab {
     scripts?: string | ScriptTagOptions | Array<string | ScriptTagOptions>;
 
     /**
-     * Passed to appended instance of `html-webpack-tags-plugin`.
+     * Passed to appended instance of `html-webpack-plugin`.
      */
-    metas?: string | MetaTagOptions | Array<string | MetaTagOptions>;
+    meta?: string | MetaTagOptions | Array<string | MetaTagOptions>;
 
     /**
      * Override `id` for React root `<div>`.
