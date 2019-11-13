@@ -6,7 +6,7 @@ import {
   ScriptTagOptions,
 } from 'html-webpack-tags-plugin';
 
-import { Plugin, RuleSetLoader } from "webpack"
+import { Plugin, RuleSetLoader, Options } from "webpack"
 import { ProxyConfigArray, ProxyConfigMap } from "webpack-dev-server"
 
 declare function Prefab(opts: Prefab.Options): any;
@@ -59,6 +59,8 @@ declare namespace Prefab {
      * Proxy configuration passed to webpack-dev-server.
      */
     proxy?: ProxyConfigArray | ProxyConfigMap;
+
+    optimization?: Options.Optimization;
   
     /**
      * Append `<link>` style tag to html. Relative to `public`.
