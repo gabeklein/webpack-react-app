@@ -35,9 +35,7 @@
     "react-hot-loader": "^4.8.4",
     "style-loader": "^1.0.0",
     "webpack-intermediate-entry": "^1.0.0",
-    "yaml-loader": "^0.5.0"
-  },
-  "peerDependencies": {
+    "yaml-loader": "^0.5.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "webpack": "^4.41.0",
